@@ -1,0 +1,7 @@
+1. reference of one of Google Font:
+	 <link href="https://fonts.googleapis.com/css?family=Bai+Jamjuree" rel="stylesheet">
+   for CSS: font-family: 'Bai Jamjuree', sans-serif;
+
+2. 
+
+docker run -it -p 8080:8080 --name coursera-aml-nlp --user root -v /c/Users/Ramdhari:/root/coursera akashin/coursera-aml-nlp

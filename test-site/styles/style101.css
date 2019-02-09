@@ -1,0 +1,36 @@
+html{
+	font-size: 10px; /* Base font size is 10 pixel*/
+	font-family: 'Merriweather', serif;
+	background-color: #00539F;
+}
+h1{
+	font-size: 30px;
+	text-align: center;
+	color: #00539F;
+	padding: 20px 0; /* first = top/bottom, second = left/right */
+	margin: 0 auto ; /*override the default setting of browser*/
+	text-shadow: 3px 3px 1px lightblue ; /* horizontal offset, vertical offset, blur radius, base color*/
+}
+h4{
+	font-size: 15px;
+}
+#img-caption{
+	text-align: center;
+}
+p,li{
+	font-size: 15px;
+	line-height: 2;
+	letter-spacing: 1px;
+}
+body{
+	width: 1000px;
+	padding: 0 20px 20px 20px; /* top right bottom left*/
+	border: 5px solid black;
+	margin: 0 auto;
+	background-color: #FF9500;
+}
+img{
+	display: block; /* change the inline element to 'block' level */
+	margin: 0 auto;
+	border: 5px solid black;
+}
