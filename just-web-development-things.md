@@ -1,7 +1,7 @@
 ###Just Web Development Things
 
 1. Write files and folder names in 'lowercase' with 'no spaces' and with words separated by 'dashes' not 'underscores'.
-	- E.g: **test-site vs test_site**. Google search engine considers 'hyphen' word separater not underscore.
+	- E.g: **test-site vs test_site**. Google search engine considers 'hyphen' as word separater not underscore.
 
 2. `<a href="xyz.com">My-text<a>`: 'href' stands for 'hypertext reference'`
 
