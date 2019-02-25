@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+
+    <title>Number guessing game</title>
+
+    <style>
+      html {
+        font-family: sans-serif;
+      }
+      body {
+        width: 50%;
+        max-width: 800px;
+        min-width: 480px;
+        margin: 0 auto;
+      }
+      .lastResult {
+        color: white;
+        padding: 3px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Number guessing game</h1>
+
+    <p>We have selected a random number between 1 and 100. See if you can guess it in 10 turns or fewer. We'll tell you if your guess was too high or too low.</p>
+
+    <div class="form">
+      <label for="guessField">Enter a guess: </label><input type="text" id="guessField" class="guessField">
+      <input type="submit" value="Submit guess" class="guessSubmit">
+    </div>
+
+    <div class="resultParas">
+      <p class="guesses"></p>
+      <p class="lastResult"></p>
+      <p class="lowOrHi"></p>
+    </div>
+    <script>
+      // Your JavaScript goes here
+      var guessFieldRef = document.querySelector('.guessField');
+      var guessSubmitRef = document.querySelector('.guessSubmit');
+      
+      var guessesParaRef = document.querySelector('.guesses');
+      var lastResultParaRef = document.querySelector('.lastResult');
+      var lowOrHiParaRef = document.querySelector('.lowOrHi');
+      var randomNumber = Math.floor(Math.random()*100) + 1;
+      var turnCounter;
+      var resetButton;
+      // resetGame();
+
+      function checkGuess()
+      {
+          var guessNumber = Number(guessFieldRef.value);
+          if( turnCounter == 1){
+            guessesParaRef.textContent = "Previous Guesses: ";
+          }
+          guessesParaRef.textContent = guessesParaRef.textContent + guessNumber + " ";
+
+          if(guessNumber === randomNumber ){
+            // We find the ans, Game is over, player won
+            lastResultParaRef.textContent = "Congratulations, you Won!!";
+            lastResultParaRef.style.backgroundColor = 'green';
+            lowOrHiParaRef.textContent = "Your Guess is Correct";
+            setGameOver();
+          }
+          else if(turnCounter == 10)
+          {
+            lastResultParaRef.textContent = "You Lose, Zero Turns Left!!";
+            lastResultParaRef.style.backgroundColor = 'red';
+            setGameOver();
+          }
+          else{
+            lastResultParaRef.textContent = "Wrong";
+            lastResultParaRef.style.backgroundColor = 'blue';
+            if( guessNumber < randomNumber)
+            {
+                lowOrHiParaRef.textContent = "Your Guess is Too Low";
+            }
+            else
+            {
+                lowOrHiParaRef.textContent = "Your Guess is Too high";
+            }
+            turnCounter += 1;
+          }
+          guessFieldRef.value = "";
+          guessFieldRef.focus();
+      }
+
+      guessSubmitRef.addEventListener('click', checkGuess);
+      
+      function resetGame(){
+        guessFieldRef.disabled = false;
+        guessSubmitRef.disabled = false;
+        guessFieldRef.value = '';
+
+        allParaRef = document.querySelectorAll('.resultParas p');
+        for(let i = 0 ;i < allParaRef.length; i++)
+        {
+            allParaRef[i].textContent = '';
+        }
+        lastResultParaRef.style.backgroundColor = 'white';
+
+        turnCounter = 1;
+        randomNumber = Math.floor(Math.random()*100) + 1;
+        guessFieldRef.focus();
+        resetButton.parentNode.removeChild(resetButton);
+      }
+
+      function setGameOver(){
+        resetButton = document.createElement('button');
+        resetButton.textContent = "Click to start New Game";
+        resetButton.addEventListener('click', resetGame);
+        document.body.appendChild(resetButton);
+
+        guessFieldRef.disabled = true;
+        guessSubmitRef.disabled = true;
+      }
+
+    </script>
+  </body>
+</html>
